@@ -1,0 +1,77 @@
+<!-- <p>header works!</p> -->
+<nav
+  class="navbar navbar-expand-lg bg-danger w-100"
+  style="position: fixed; top: 0px; z-index: 2"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="/"
+      ><i class="fa-brands fa-slack fa-spin fa-3x me-2"></i
+      ><span class="fs-3"><b>GloboMart</b></span></a
+    ><button
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      class="navbar-toggler"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <div class="d-flex justify-content-between w-100">
+        <div></div>
+        <div class="w-50">
+          <a class="nav-link active d-flex mt-2"
+            ><input
+              type="search"
+              placeholder="Search"
+              class="form-control me-2" /><button
+              type="submit"
+              class="btn btn-outline-light"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i></button
+          ></a>
+        </div>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li>
+            <a class="nav-link active" href="wishlist"
+              ><button class="btn btn-outline-light">
+                <i class="fa-solid fa-heart fa-beat me-2"></i>Wishlist<span
+                  class="badge bg-secondary ms-2"
+                  >{{ wishlistCount }}</span
+                >
+              </button></a
+            >
+          </li>
+          <li>
+            <a class="nav-link active" href="cart"
+              ><button class="btn btn-outline-light">
+                <i class="fa-solid fa-cart-shopping me-2"></i>Cart<span
+                  class="badge bg-secondary ms-2"
+                >
+                  {{ cartCount }}
+                </span>
+              </button></a
+            >
+          </li>
+          <li *ngIf="!token">
+            <a class="nav-link active" href="/login"
+              ><button class="btn btn-outline-light">
+                <i class="fa-solid fa-user me-2"></i>Log In
+              </button></a
+            >
+          </li>
+          <!-- (onclick)="logout()" -->
+          <li *ngIf="token">
+            <a class="nav-link active"
+              ><button class="btn btn-outline-light">
+                <i class="fa-solid fa-user me-2"></i>{{ user }}
+              </button></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

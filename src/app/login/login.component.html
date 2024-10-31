@@ -1,0 +1,106 @@
+<!-- <p>login works!</p> -->
+<div
+  class="row w-100 d-flex justify-content-center align-items-center"
+  style="height: 80vh"
+>
+  <div class="row w-75 mt-5" style="height: 470px">
+    <div
+      class="col-md-6 shadow d-flex justify-content-center align-items-center flex-column p-5"
+    >
+      <div
+        class="p-3 d-flex justify-content-center align-items-center"
+        style="
+          height: 70px;
+          width: 70px;
+          border: 3px solid red;
+          border-radius: 50%;
+        "
+      >
+        <i class="fa-solid fa-user fa-2x text-danger"></i>
+      </div>
+      <h1 class="text-center text-danger d-flex">Welcome User</h1>
+      <form
+        novalidate=""
+        class="border rounded p-3 w-100 shadow mt-5"
+        [formGroup]="loginForm" (ngSubmit)="login()"
+      >
+        <div class="mb-4 mt-3">
+          <input
+            type="text"
+            placeholder="Enter Email"
+            formControlName="email"
+            name="email"
+            class="form-control"
+          /><!-- 
+            /**
+             * The condition loginForm.get('email')?.invalid && loginForm.get('email')?.touched ensures that the error message is only shown when:
+             *
+             * The email field is invalid (fails the validation rules), and...
+             * The field has been touched (meaning the user has interacted with it).
+             * This prevents showing an error message prematurely, such as when the form first loads, before the user starts typing.
+             */ -->
+          <span
+            *ngIf="
+              loginForm.get('email')?.errors && loginForm.get('email')?.touched
+            "
+            class="text-warning"
+            >*Invalid email</span
+          >
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            placeholder="Enter Password"
+            formControlName="password"
+            name="pswd"
+            class="form-control"
+          /><span
+            *ngIf="
+              loginForm.get('password')?.errors &&
+              loginForm.get('password')?.touched
+            "
+            class="text-warning"
+            >*Invalid password</span
+          >
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-danger w-100">Login</button>
+        </div>
+      </form>
+    </div>
+    <!-- background-image: url('https://img.freepik.com/premium-photo/woman-jumping-while-holding-her-shopping-bags_23-2148302844.jpg?w=360');
+        background-size: cover; -->
+    <div
+      class="col-md-6 shadow p-0 d-flex justify-content-center align-items-center flex-column text-light"
+      [ngStyle]="{
+        'background-image': 'url(' + loginImg + ')',
+        'background-size': 'cover'
+      }"
+    >
+      <div
+        class="d-flex justify-content-center align-items-center flex-column"
+        style="background-color: rgba(128, 128, 128, 0.276); height: 100%"
+      >
+        <h4 class="text-light">
+          <i class="fa-brands fa-slack fa-spin fa-2x me-2"></i
+          ><span class="fs-3"><b>GloboMart</b></span>
+        </h4>
+        <h2>Din't Have an Account</h2>
+        <p class="p-5" style="text-align: center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ex
+          magnam fugiat quos non a aliquid corrupti quae explicab Lorem ipsum
+          dolor sit, amet consectetur adipisicing elit. Unde, impedit quam? Ab
+          amet architecto
+        </p>
+        <a
+          routerlink="/user/register"
+          class="btn btn-outline-light"
+          href="/user/register"
+        >
+          SIGN UP</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

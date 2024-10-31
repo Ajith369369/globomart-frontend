@@ -1,0 +1,90 @@
+<!-- <p>cart works!</p> -->
+<app-header></app-header>
+<div class="container-fluid" style="margin-top: 100px">
+  <h1 class="my-5 text-center text-danger">Cart</h1>
+
+  <!-- Items -->
+  <div *ngIf="allProducts.length > 0" class="row my-5">
+    <div class="col-md-1"></div>
+    <div class="col-md-7 table-responsive" style="overflow-x: auto">
+      <table class="table table-bordered shadow">
+        <thead>
+          <tr>
+            <th class="bg-secondary p-3 text-light">Sl. No.</th>
+            <th class="bg-secondary p-3 text-light">PRODUCT</th>
+            <th class="bg-secondary p-3 text-light">IMAGE</th>
+            <th class="bg-secondary p-3 text-light">PRICE</th>
+            <th class="bg-secondary p-3 text-light">QUANTITY</th>
+            <th class="bg-secondary p-3 text-light">ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of allProducts; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ product.title }}</td>
+            <td class="d-flex justify-content-center">
+              <img
+                [src]="product.image"
+                alt=""
+                class="w-100"
+                style="height: 150px"
+              />
+            </td>
+            <td>$ {{ product.price }}</td>
+            <td>
+              <div class="d-flex justify-content-center align-items-center">
+                <button (click)="decrement(product._id)" class="btn btn-outline-secondary rounded-0 me-2">
+                  -
+                </button>
+                <input
+                  type="text"
+                  class="form-control w-25"
+                  [value]="product.quantity"
+                  readonly
+                />
+                <button (click)="increment(product._id)" class="btn btn-outline-secondary rounded-0 ms-2">
+                  +
+                </button>
+              </div>
+            </td>
+            <td>
+              <button
+                (click)="deleteCartItem(product._id)"
+                class="btn btn-danger"
+              >
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center mt-5">
+        <button routerLink="/" class="btn btn-outline-success">Add more items</button>
+        <button (click)="emptyCart()" class="btn btn-outline-danger ms-3">Empty the cart</button>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="shadow p-4 rounded mt-5 mt-md-0">
+        <h3 class="text-center text-success">Cart Summary</h3>
+        <h5 class="mt-3">Total no. of products: {{allProducts.length}}</h5>
+        <h5>Grand Total: {{total}}</h5>
+        <button (click)="checkout()" class="btn btn-success mt-3 w-100">Checkout</button>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <!-- No items -->
+  <div *ngIf="allProducts.length == 0" class="row my-5">
+    <div class="col-md-4"></div>
+    <div
+      class="col-md-4 d-flex flex-column justify-content-between align-items-center"
+    >
+      <img [src]="emptyCartImg" alt="no image" class="w-100" />
+      <button routerLink="/" class="btn btn-success shadow">
+        <i class="fa-solid fa-backward me-2"></i>Back to Home
+      </button>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>

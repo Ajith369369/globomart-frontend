@@ -1,0 +1,36 @@
+<!-- <p>view-product works!</p> -->
+<app-header></app-header>
+<div class="container-fluid" style="margin-top: 100px">
+  <!-- Product section-->
+  <section class="py-5">
+    <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center">
+        <div class="col-md-6">
+          <img class="card-img-top mb-5 mb-md-0" [src]="product.image" alt="..." style="width: 100%; height: 500px;" />
+        </div>
+        <div class="col-md-6">
+          <div class="small mb-1 text-warning">Product ID: {{product._id}}</div>
+          <h1 class="display-5 fw-bolder">{{product.title}}</h1>
+          <div class="fs-5 mb-5">
+            <!-- <span class="text-decoration-line-through">$45.00</span> -->
+            <span class="text-primary fw-bold fs-3">${{product.price}}</span>
+          </div>
+          <p class="lead">
+            {{product.description}}
+          </p>
+          <div class="d-flex">
+            <!-- <input
+              class="form-control text-center me-3"
+              id="inputQuantity"
+              type="num"
+              value="1"
+              style="max-width: 3rem"
+            /> -->
+            <a (click)="addItemToWishlist()" class="btn btn-outline-danger"><i class="fa-solid fa-heart me-2"></i>Wishlist</a>
+            <a (click)="addToCart()" class="btn btn-outline-success ms-4"><i class="fa-solid fa-cart-shopping me-2"></i>Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,5 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# echo "# globomart-frontend" >> README.md
+# git init
+# git add README.md
+# git commit -m "first commit"
+# git branch -M main
+# git remote add origin https://github.com/Ajith369369/globomart-frontend.git
+# git push -u origin main
+
 # Compiled output
 /dist
 /tmp

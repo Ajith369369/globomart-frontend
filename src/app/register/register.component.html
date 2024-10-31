@@ -1,0 +1,123 @@
+<!-- <p>register works!</p> -->
+<div
+  class="row w-100 d-flex justify-content-center align-items-center"
+  style="height: 85vh; margin-top: -40px"
+>
+  <div class="row w-75 mt-5" style="height: 470px">
+    <div
+      class="col-md-6 shadow d-flex justify-content-center align-items-center flex-column p-5"
+    >
+      <div
+        class="p-3 d-flex justify-content-center align-items-center"
+        style="
+          height: 70px;
+          width: 70px;
+          border: 3px solid red;
+          border-radius: 50%;
+        "
+      >
+        <i class="fa-solid fa-user fa-2x text-danger"></i>
+      </div>
+      <h2 class="text-center text-danger d-flex">Join Family</h2>
+      <form
+        novalidate=""
+        class="border rounded p-3 w-100 shadow mt-4"
+        [formGroup]="registerForm" (ngSubmit)="register()"
+      >
+        <div class="mb-4 mt-3">
+          <input
+            type="text"
+            placeholder="Enter Username"
+            formControlName="username"
+            name="uname"
+            class="form-control"
+          />
+          <!-- 
+          /**
+           * The condition registerForm.get('username')?.invalid && registerForm.get('username')?.touched ensures that the error message is only shown when:
+           *
+           * The username field is invalid (fails the validation rules), and...
+           * The field has been touched (meaning the user has interacted with it).
+           * This prevents showing an error message prematurely, such as when the form first loads, before the user starts typing.
+           */ -->
+          <span
+            *ngIf="
+              registerForm.get('username')?.errors &&
+              registerForm.get('username')?.touched
+            "
+            class="text-warning"
+            >*Invalid username</span
+          >
+        </div>
+        <div class="mb-4 mt-3">
+          <input
+            type="text"
+            placeholder="Enter Email"
+            formControlName="email"
+            name="email"
+            class="form-control"
+          />
+          <span
+            *ngIf="
+              registerForm.get('email')?.errors &&
+              registerForm.get('email')?.touched
+            "
+            class="text-warning"
+            >*Invalid email</span
+          >
+        </div>
+        <div class="mb-4">
+          <input
+            type="text"
+            placeholder="Enter Password"
+            formControlName="password"
+            name="pswd"
+            class="form-control"
+          /><span
+            *ngIf="
+              registerForm.get('password')?.errors &&
+              registerForm.get('password')?.touched
+            "
+            class="text-warning"
+            >*Invalid password</span
+          >
+        </div>
+        <div class="mb-3">
+          <button type="submit" class="btn btn-danger w-100">Register</button>
+        </div>
+      </form>
+    </div>
+    <div
+      class="col-md-6 shadow d-flex p-0 justify-content-center align-items-center flex-column text-light"
+      [ngStyle]="{
+        'background-image': 'url(' + registerImg + ')',
+        'background-size': 'cover'
+      }"
+    >
+      <div
+        class="d-flex w-100 justify-content-center align-items-center flex-column"
+        style="background-color: rgba(118, 117, 118, 0.393); height: 100%"
+      >
+        <h4 class="text-light">
+          <i class="fa-brands fa-slack fa-spin fa-2x me-2"></i
+          ><span class="fs-3"><b>GloboMart</b></span>
+        </h4>
+        <h2>Already Have an Account</h2>
+        <p class="p-5" style="text-align: center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ex
+          magnam fugiat quos non a aliquid corrupti quae explicab Lorem ipsum
+          dolor sit, amet consectetur adipisicing elit. Unde, impedit quam? Ab
+          amet architecto
+        </p>
+        <a
+          routerlink="/user/login"
+          class="btn btn-outline-light"
+          href="/user/login"
+        >
+          SIGN IN</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
